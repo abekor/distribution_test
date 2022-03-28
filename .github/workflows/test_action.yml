@@ -4,13 +4,15 @@ on:
 
 jobs:
   build_wheels:
-    name: Test build-python-dist action
-    runs-on: ubuntu-20.04
-
+    name: Running Units Tests
+    runs-on: ubuntu-latest
+      
     steps:
-      - uses: actions/checkout@v2
-      - id: build
-        uses: ./
+      - uses: actions/checkout@v1
+      - name: Build Python Source and Wheel Distributions
+        # You may pin to the exact commit or the version.
+        # uses: OpenAstronomy/build-python-dist@6307a81087549def241b9c1f887208984c7b729d
+        uses: OpenAstronomy/build-python-dist@v1
         with:
           pure_python_wheel: true
           test_extras: test
