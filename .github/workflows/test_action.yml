@@ -1,0 +1,17 @@
+on:
+  push:
+  pull_request:
+
+jobs:
+  build_wheels:
+    name: Test build-python-dist action
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - id: build
+        uses: ./
+        with:
+          pure_python_wheel: true
+          test_extras: test
+          test_command: pytest --pyargs test_package
